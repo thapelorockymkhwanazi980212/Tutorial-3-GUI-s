@@ -173,6 +173,68 @@ public class MemberShipForm extends JFrame
         setVisible(true);
       
     }
-    
-    
+
+    //adding a private class to create an event for buttons
+     private class Register implements ActionListener
+    {
+
+         @Override
+        public void actionPerformed(ActionEvent e) 
+        {
+            String name = nameTextField.getText();
+            String surname = surnameTextField.getText();
+            String idNo = idNoTextField.getText();
+            String gender = (String)genderComboBox.getSelectedItem();
+            String typeOfContract = "Month-to-Month";
+            Boolean isPersonalTrainerNeed = personalTrainerCheckBox.isSelected();
+            Boolean tr = false;
+            
+            if(sixMonthsRadioButton.isSelected())
+            {
+                typeOfContract = "Six Months";
+            }
+            else if(annualRadioButton.isSelected())
+            {
+                typeOfContract = "Annual";
+            }
+            if(isPersonalTrainerNeed)
+            {
+                tr = true;
+            }
+            
+            Member men = new Member(name, surname, idNo, gender, typeOfContract, isPersonalTrainerNeed);
+            members.add(men);
+            
+            commentsArea.setText("The member has been added"
+                    + "\nName:" + name + "\nSurname:" + surname + "\nID No:" + idNo + "\nGender:" + gender + "\nType of contract: " + typeOfContract
+            + "\nTrainer needed?: " + tr);
+            
+        }
+
+        private class Clear implements ActionListener
+     {
+
+        @Override
+        public void actionPerformed(ActionEvent e) 
+        {
+           nameTextField.setText("");
+           surnameTextField.setText("");
+           idNoTextField.setText("");
+           buttonGroup.clearSelection();
+           personalTrainerCheckBox.setSelected(false);
+           commentsArea.setText("");
+        }
+     
+     }
+     
+     private class Exit implements ActionListener
+     {
+
+        @Override
+        public void actionPerformed(ActionEvent e) 
+        {
+          System.exit(0);
+        }
+     
+     }
 }
