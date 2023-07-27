@@ -82,7 +82,19 @@ public class MemberShipForm extends JFrame
        commentsArea = new JTextArea(20, 50);
        
        //button
-       applyButton = new JButton("APPLY");
+       registerButton = new JButton("REGISTER");
+       registerButton.addActionListener(new Register());
+               
+       searchButton = new JButton("SEARCH");
+       updateButton = new JButton("UPDATE");
+       removeButton = new JButton("REMOVE");
+       displayAllButton = new JButton("DISPLAY ALL");
+       
+       clearButton = new JButton("CLEAR");
+       clearButton.addActionListener(new Clear());
+       
+       exitButton = new JButton("EXIT");
+       exitButton.addActionListener(new Exit());
        
        //srollpane
        scrollPaneTextArea = new JScrollPane(commentsArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
